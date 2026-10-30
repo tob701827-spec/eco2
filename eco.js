@@ -1,5 +1,5 @@
 // Enlace predeterminado de tu modelo en Teachable Machine
-const DEFAULT_URL = "https://teachablemachine.withgoogle.com/models/";
+const DEFAULT_URL = "https://teachablemachine.withgoogle.com/models/46qzTANPb/"
 let URL = DEFAULT_URL;
 
 let model, webcam, maxPredictions;
