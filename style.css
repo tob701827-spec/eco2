@@ -1,61 +1,97 @@
 /* ----------------------------------------------------
-   EcoTrack - Estilo Vistoso (Verde, Blanco y Azul)
+   EcoTrack - Estilo Retro Ecológico (Blanco, Verde y Azul)
    ---------------------------------------------------- */
 
 :root {
-  --bg-dark: #070d19;
-  --card-bg: rgba(13, 22, 38, 0.88);
+  --bg-dark: #050b14;
+  --card-bg: rgba(10, 20, 35, 0.88);
   --eco-green: #10b981;
-  --eco-blue: #3b82f6;
-  --eco-white: #f8fafc;
+  --eco-blue: #2563eb;
+  --eco-white: #ffffff;
 }
 
 body.bg-eco-dark {
   background-color: var(--bg-dark);
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
-    radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 45%);
+    radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(37, 99, 235, 0.18) 0%, transparent 40%);
   background-attachment: fixed;
-  color: var(--eco-white);
+  color: #f1f5f9;
 }
 
-/* Tarjeta Neón con Bordes Verdes y Azules */
+/* ----------------------------------------------------
+   LOGO RETRO (Estilo Pixel-Art / Arcade 80-90s)
+   ---------------------------------------------------- */
+.retro-title {
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(180deg, #ffffff 0%, #a7f3d0 45%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 10px rgba(16, 185, 129, 0.5));
+  letter-spacing: -1px;
+}
+
+.retro-logo-icon {
+  width: 44px;
+  height: 44px;
+  background: #022c22;
+  border: 3px solid #10b981;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    inset 0 0 8px rgba(16, 185, 129, 0.6),
+    3px 3px 0px #0369a1,
+    0 0 12px rgba(16, 185, 129, 0.4);
+  transform: rotate(-3deg);
+  transition: transform 0.2s ease;
+}
+
+.retro-logo-icon:hover {
+  transform: rotate(0deg) scale(1.08);
+}
+
+/* ----------------------------------------------------
+   TARJETAS Y BOTONES (Blanco, Verde, Azul)
+   ---------------------------------------------------- */
 .glass-card-dark {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   border-radius: 1.5rem;
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.08);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.1);
   transition: all 0.3s ease;
 }
 
 .glass-card-dark:hover {
-  border-color: rgba(59, 130, 246, 0.5);
+  border-color: rgba(59, 130, 246, 0.6);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.2);
 }
 
 /* Botón Principal (Degradado Verde a Azul) */
 .btn-neon-primary {
   background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
-  color: #ffffff;
-  font-weight: 700;
+  color: var(--eco-white);
+  font-weight: 800;
   border-radius: 0.85rem;
-  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 18px rgba(5, 150, 105, 0.45);
   transition: all 0.25s ease;
 }
 
 .btn-neon-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
-  filter: brightness(1.1);
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.65);
+  filter: brightness(1.15);
 }
 
-/* Botón Secundario (Borde Verde/Blanco) */
+/* Botón Secundario */
 .btn-neon-secondary {
   background: rgba(15, 23, 42, 0.85);
-  color: #f1f5f9;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--eco-white);
+  border: 1px solid rgba(16, 185, 129, 0.45);
   font-weight: 700;
   border-radius: 0.85rem;
   transition: all 0.25s ease;
@@ -63,12 +99,12 @@ body.bg-eco-dark {
 
 .btn-neon-secondary:hover {
   background: rgba(30, 41, 59, 0.95);
-  border-color: var(--eco-blue);
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  border-color: #3b82f6;
+  color: var(--eco-white);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
 }
 
-/* Ajustes de Cámara Full Container */
+/* Ajuste de cámara */
 #webcam-container canvas {
   width: 100% !important;
   height: 100% !important;
@@ -76,7 +112,7 @@ body.bg-eco-dark {
   border-radius: 1rem;
 }
 
-/* Transición suave para las barras de progreso */
+/* Animación de barras de progreso */
 .smooth-progress {
   transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -86,7 +122,7 @@ body.bg-eco-dark {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #070d19;
+  background: #050b14;
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
