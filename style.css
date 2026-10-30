@@ -1,0 +1,97 @@
+/* ----------------------------------------------------
+   EcoTrack - Estilo Vistoso (Verde, Blanco y Azul)
+   ---------------------------------------------------- */
+
+:root {
+  --bg-dark: #070d19;
+  --card-bg: rgba(13, 22, 38, 0.88);
+  --eco-green: #10b981;
+  --eco-blue: #3b82f6;
+  --eco-white: #f8fafc;
+}
+
+body.bg-eco-dark {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 45%);
+  background-attachment: fixed;
+  color: var(--eco-white);
+}
+
+/* Tarjeta Neón con Bordes Verdes y Azules */
+.glass-card-dark {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(16, 185, 129, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-card-dark:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+/* Botón Principal (Degradado Verde a Azul) */
+.btn-neon-primary {
+  background: linear-gradient(135deg, #059669 0%, #2563eb 100%);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.85rem;
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4);
+  transition: all 0.25s ease;
+}
+
+.btn-neon-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.6);
+  filter: brightness(1.1);
+}
+
+/* Botón Secundario (Borde Verde/Blanco) */
+.btn-neon-secondary {
+  background: rgba(15, 23, 42, 0.85);
+  color: #f1f5f9;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  font-weight: 700;
+  border-radius: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.btn-neon-secondary:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: var(--eco-blue);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Ajustes de Cámara Full Container */
+#webcam-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+/* Transición suave para las barras de progreso */
+.smooth-progress {
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #070d19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
