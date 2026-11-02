@@ -4,8 +4,9 @@ let URL = DEFAULT_URL;
 
 let model, webcam, maxPredictions;
 let webcamActive = false;
+let animationFrameId = null;
 
-// Almacenar probabilidades suavizadas para evitar parpadeos en las barras
+// Almacenar probabilidades suavizadas para evitar parpadeos
 let smoothedProbabilities = [];
 
 // Inicializar al cargar o cambiar de modelo
@@ -46,6 +47,7 @@ async function toggleWebcam() {
     const webcamContainer = document.getElementById("webcam-container");
     const imagePreview = document.getElementById("image-preview");
     const btnWebcam = document.getElementById("btn-webcam");
+    const btnRemovePhoto = document.getElementById("btn-remove-photo");
 
     if (!model) {
         const loaded = await loadModel(URL);
@@ -54,11 +56,14 @@ async function toggleWebcam() {
 
     if (!webcamActive) {
         try {
-            placeholder.classList.add("hidden");
+            // Ocultar vista previa de imagen y botón de quitar foto si estaban activos
             imagePreview.classList.add("hidden");
+            if (btnRemovePhoto) btnRemovePhoto.classList.add("hidden");
+
+            placeholder.classList.add("hidden");
             webcamContainer.classList.remove("hidden");
 
-            // Cargar la cámara ajustada al contenedor
+            // Configuración adaptada (400x400 con modo espejo)
             webcam = new tmImage.Webcam(400, 400, true);
             await webcam.setup();
             await webcam.play();
@@ -68,10 +73,10 @@ async function toggleWebcam() {
             btnWebcam.innerHTML = `<i class="fa-solid fa-video-slash"></i> Detener Cámara`;
             btnWebcam.classList.replace("btn-neon-primary", "bg-rose-600");
 
-            window.requestAnimationFrame(loopWebcam);
+            animationFrameId = window.requestAnimationFrame(loopWebcam);
         } catch (error) {
             console.error("Error al acceder a la cámara:", error);
-            alert("No se pudo acceder a la cámara. Revisa los permisos del navegador.");
+            alert("No se pudo acceder a la cámara. Revisa los permisos en tu navegador o celular.");
             stopWebcam();
         }
     } else {
@@ -79,29 +84,47 @@ async function toggleWebcam() {
     }
 }
 
+// Detener la cámara web de forma limpia sin que las barras se disparen
 function stopWebcam() {
-    if (webcam && webcamActive) {
-        webcam.stop();
-        webcamActive = false;
+    webcamActive = false;
+
+    if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
     }
+
+    if (webcam) {
+        try {
+            webcam.stop();
+        } catch (e) {
+            console.warn("Cámara ya detenida:", e);
+        }
+    }
+
     const placeholder = document.getElementById("placeholder-ui");
     const webcamContainer = document.getElementById("webcam-container");
     const btnWebcam = document.getElementById("btn-webcam");
-    const impactCard = document.getElementById("eco-impact-card");
 
     webcamContainer.classList.add("hidden");
+    webcamContainer.innerHTML = ""; // Limpia el canvas para que no procese cuadros negros
     placeholder.classList.remove("hidden");
-    if (impactCard) impactCard.classList.add("hidden");
 
     btnWebcam.innerHTML = `<i class="fa-solid fa-video"></i> Activar Cámara`;
     btnWebcam.classList.replace("bg-rose-600", "btn-neon-primary");
+
+    // Restablecer las barras y el impacto sin saltos ni errores
+    resetResultsState();
 }
 
 async function loopWebcam() {
-    if (!webcamActive) return;
+    if (!webcamActive || !webcam) return;
     webcam.update();
     await predict(webcam.canvas);
-    window.requestAnimationFrame(loopWebcam);
+    
+    // Solo solicitar el siguiente frame si la cámara sigue verdaderamente activa
+    if (webcamActive) {
+        animationFrameId = window.requestAnimationFrame(loopWebcam);
+    }
 }
 
 // Manejar la subida de una imagen estática
@@ -116,14 +139,15 @@ async function handleImageUpload(event) {
     const placeholder = document.getElementById("placeholder-ui");
     const webcamContainer = document.getElementById("webcam-container");
     const imagePreview = document.getElementById("image-preview");
+    const btnRemovePhoto = document.getElementById("btn-remove-photo");
 
     placeholder.classList.add("hidden");
     webcamContainer.classList.add("hidden");
     imagePreview.classList.remove("hidden");
+    if (btnRemovePhoto) btnRemovePhoto.classList.remove("hidden");
 
     const reader = new FileReader();
     reader.onload = function (e) {
-        // Asignar onload antes de src para evitar pérdida del evento en navegadores
         imagePreview.onload = async function () {
             if (!model) {
                 await loadModel(URL);
@@ -134,8 +158,49 @@ async function handleImageUpload(event) {
     };
     reader.readAsDataURL(file);
 
-    // Permitir volver a seleccionar el mismo archivo consecutivamente
+    // Permite volver a subir el mismo archivo consecutivamente
     event.target.value = "";
+}
+
+// Quitar la foto actual y restablecer el visor
+function clearPhoto() {
+    const placeholder = document.getElementById("placeholder-ui");
+    const imagePreview = document.getElementById("image-preview");
+    const btnRemovePhoto = document.getElementById("btn-remove-photo");
+    const fileInput = document.getElementById("image-upload");
+
+    imagePreview.src = "";
+    imagePreview.classList.add("hidden");
+    placeholder.classList.remove("hidden");
+
+    if (btnRemovePhoto) btnRemovePhoto.classList.add("hidden");
+    if (fileInput) fileInput.value = "";
+
+    // Restablecer resultados sin saltos ni barras congeladas
+    resetResultsState();
+}
+
+// Restablecer el panel de resultados y ocultar impacto sin errores
+function resetResultsState() {
+    if (maxPredictions) {
+        smoothedProbabilities = new Array(maxPredictions).fill(0);
+    } else {
+        smoothedProbabilities = [];
+    }
+
+    const resultsContainer = document.getElementById("results-container");
+    if (resultsContainer) {
+        resultsContainer.innerHTML = `
+            <p class="text-xs text-slate-400 italic text-center py-6 font-medium">
+                Esperando imagen o escaneo de residuos...
+            </p>
+        `;
+    }
+
+    const impactCard = document.getElementById("eco-impact-card");
+    if (impactCard) {
+        impactCard.classList.add("hidden");
+    }
 }
 
 // Predicción con suavizado exponencial
@@ -167,18 +232,18 @@ async function predict(sourceElement) {
         const probVal = smoothedProbabilities[i];
 
         const progressWrapper = document.createElement("div");
-        progressWrapper.className = "space-y-1.5 p-3 rounded-xl bg-white border border-slate-200 shadow-sm";
+        progressWrapper.className = "space-y-1.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 shadow-sm transition-all";
 
         progressWrapper.innerHTML = `
             <div class="flex justify-between items-center text-xs sm:text-sm font-semibold">
-                <span class="capitalize text-slate-700 flex items-center gap-2">
-                    <i class="fa-solid fa-tag text-emerald-600"></i> ${className}
+                <span class="capitalize text-slate-700 flex items-center gap-2 truncate">
+                    <i class="fa-solid fa-tag text-emerald-600 text-xs sm:text-sm"></i> ${className}
                 </span>
-                <span class="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span class="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-xs sm:text-sm">
                     ${probVal.toFixed(1)}%
                 </span>
             </div>
-            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+            <div class="w-full bg-slate-100 rounded-full h-2.5 sm:h-3 overflow-hidden border border-slate-200">
                 <div class="bg-gradient-to-r from-emerald-500 to-blue-500 h-full rounded-full smooth-progress" style="width: ${probVal.toFixed(1)}%"></div>
             </div>
         `;
