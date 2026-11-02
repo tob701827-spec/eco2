@@ -1,182 +1,267 @@
 /* ----------------------------------------------------
-   EcoTrack - Tema Blanco, Verde Oscuro y Dorado Elegante
-   Optimizado para Desktop y Dispositivos Móviles
+   EcoTrack - Estilo Ambiental Moderno
+   Fondo Blanco Puro con Acentos Ecológicos Vivos (Esmeralda, Bosque y Oro Solar)
+   Optimizado para Smartphones (Cámara Delantera/Trasera) y Escritorio
    ---------------------------------------------------- */
 
 :root {
-  --bg-light: #fafbfc;
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --dark-green: #064e3b;
-  --dark-green-deep: #022c22;
-  --gold: #d4af37;
-  --gold-warm: #f59e0b;
-  --gold-dark: #b45309;
+  --bg-white: #ffffff;
+  --eco-emerald-primary: #059669;
+  --eco-emerald-light: #10b981;
+  --eco-emerald-deep: #064e3b;
+  --eco-emerald-darkest: #022c22;
+  --eco-mint-bg: #ecfdf5;
+  --eco-mint-border: #a7f3d0;
+  --eco-gold-primary: #f59e0b;
+  --eco-gold-dark: #b45309;
+  --eco-gold-bg: #fffbeb;
+  --card-bg: #ffffff;
+  --card-border: #d1fae5;
+  --text-dark: #0f172a;
 }
 
-/* Evitar resaltado azul/gris al tocar en móviles */
+/* Evitar resaltado táctil no deseado en celulares */
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
 
 body.bg-eco-light {
-  background-color: var(--bg-light);
-  /* Degradados ambientales de fondo: Verde bosque y resplandor dorado sobre blanco puro */
+  background-color: var(--bg-white);
+  /* Fondo blanco predominante con iluminación ambiental botánica súper sutil */
   background-image: 
-    radial-gradient(circle at 10% 8%, rgba(6, 78, 59, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 90% 92%, rgba(212, 175, 55, 0.12) 0%, transparent 45%);
+    radial-gradient(circle at 12% 10%, rgba(16, 185, 129, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 88% 90%, rgba(245, 158, 11, 0.04) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.02) 0%, transparent 60%);
   background-attachment: fixed;
-  color: #1e293b;
+  color: var(--text-dark);
   overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 /* ----------------------------------------------------
-   LOGO RETRO: VERDE OSCURO Y DORADO
+   LOGO Y ENCABEZADO ECOLÓGICO
    ---------------------------------------------------- */
 .retro-title {
   font-family: 'Press Start 2P', monospace;
-  background: linear-gradient(180deg, #d4af37 0%, #f59e0b 35%, #064e3b 100%);
+  background: linear-gradient(180deg, #10b981 0%, #059669 45%, #064e3b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(1px 1px 0px #ffffff) drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35));
+  filter: drop-shadow(1px 1px 0px #ffffff) drop-shadow(0 2px 6px rgba(16, 185, 129, 0.25));
   letter-spacing: -0.5px;
 }
 
 .retro-logo-icon {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   background: #ffffff;
-  border: 2.5px solid var(--dark-green);
-  border-radius: 10px;
+  border: 2.5px solid var(--eco-emerald-deep);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 
-    2px 2px 0px var(--gold),
-    0 4px 10px rgba(6, 78, 59, 0.15);
+    2px 2px 0px var(--eco-gold-primary),
+    0 4px 12px rgba(5, 150, 105, 0.15);
   transform: rotate(-3deg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 @media (min-width: 640px) {
   .retro-logo-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
     border-width: 3px;
     box-shadow: 
-      3px 3px 0px var(--gold),
-      0 4px 14px rgba(6, 78, 59, 0.2);
+      3px 3px 0px var(--eco-gold-primary),
+      0 6px 16px rgba(5, 150, 105, 0.2);
   }
   .retro-title {
     letter-spacing: -1px;
-    filter: drop-shadow(2px 2px 0px #ffffff) drop-shadow(0 3px 10px rgba(212, 175, 55, 0.4));
+    filter: drop-shadow(2px 2px 0px #ffffff) drop-shadow(0 3px 8px rgba(16, 185, 129, 0.3));
   }
 }
 
 .retro-logo-icon:hover,
 .retro-logo-icon:active {
-  transform: rotate(0deg) scale(1.05);
+  transform: rotate(0deg) scale(1.06);
   box-shadow: 
-    3px 3px 0px var(--dark-green),
-    0 6px 16px rgba(212, 175, 55, 0.35);
+    3px 3px 0px var(--eco-emerald-primary),
+    0 6px 18px rgba(245, 158, 11, 0.3);
 }
 
 /* ----------------------------------------------------
-   TARJETAS DE CRISTAL CON BORDES VERDE Y ORO
+   TARJETAS BLANCAS CON RESALTADO AMBIENTAL (GLASS-CARD)
    ---------------------------------------------------- */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(6, 78, 59, 0.18);
+  border: 1.5px solid var(--card-border);
   border-radius: 1.25rem;
-  box-shadow: 0 8px 24px -4px rgba(6, 78, 59, 0.05), 0 0 16px rgba(212, 175, 55, 0.07);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 
+    0 4px 20px -2px rgba(5, 150, 105, 0.06), 
+    0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 @media (min-width: 640px) {
   .glass-card {
     border-radius: 1.5rem;
     border-width: 2px;
-    box-shadow: 0 10px 30px -5px rgba(6, 78, 59, 0.06), 0 0 20px rgba(212, 175, 55, 0.09);
+    box-shadow: 
+      0 8px 28px -4px rgba(5, 150, 105, 0.08), 
+      0 4px 10px -2px rgba(0, 0, 0, 0.03);
   }
 }
 
 .glass-card:hover {
-  border-color: rgba(212, 175, 55, 0.55);
-  box-shadow: 0 12px 30px -4px rgba(6, 78, 59, 0.1), 0 0 22px rgba(212, 175, 55, 0.22);
+  border-color: #6ee7b7;
+  box-shadow: 
+    0 12px 32px -4px rgba(5, 150, 105, 0.12), 
+    0 4px 12px rgba(16, 185, 129, 0.08);
 }
 
-/* Botón Principal (Verde Oscuro Profundo a Dorado) */
+/* ----------------------------------------------------
+   BOTONES ECOLÓGICOS VIBRANTES
+   ---------------------------------------------------- */
+
+/* Botón Principal (Verde Esmeralda Vibrante con Brillo Natural) */
+.btn-eco-primary,
 .btn-neon-primary {
-  background: linear-gradient(135deg, #064e3b 0%, #065f46 65%, #b45309 100%);
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%);
   color: #ffffff;
   font-weight: 800;
   border-radius: 0.85rem;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 4px 16px rgba(6, 78, 59, 0.35), 0 0 8px rgba(212, 175, 55, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 14px rgba(5, 150, 105, 0.35), 
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  cursor: pointer;
 }
 
+.btn-eco-primary:hover,
 .btn-neon-primary:hover {
-  background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #d4af37 100%);
+  background: linear-gradient(135deg, #047857 0%, #059669 50%, #064e3b 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(6, 78, 59, 0.45), 0 0 16px rgba(212, 175, 55, 0.4);
-  filter: brightness(1.05);
+  box-shadow: 
+    0 8px 22px rgba(5, 150, 105, 0.45), 
+    0 0 12px rgba(16, 185, 129, 0.3);
+  filter: brightness(1.04);
 }
 
+.btn-eco-primary:active,
 .btn-neon-primary:active {
   transform: translateY(1px) scale(0.98);
 }
 
-/* Botón Secundario (Blanco Puro con Borde Verde Oscuro y Acento Dorado) */
+/* Botón Secundario (Blanco con Borde Verde Esmeralda y Acento Menta) */
+.btn-eco-secondary,
 .btn-neon-secondary {
   background: #ffffff;
   color: #064e3b;
-  border: 2px solid #064e3b;
+  border: 2px solid #059669;
   font-weight: 800;
   border-radius: 0.85rem;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.08);
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
+.btn-eco-secondary:hover,
 .btn-neon-secondary:hover {
-  background: #fffdf5;
-  border-color: #d4af37;
-  color: #b45309;
+  background: var(--eco-mint-bg);
+  border-color: #047857;
+  color: #047857;
   transform: translateY(-2px);
-  box-shadow: 0 5px 16px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.18);
 }
 
+.btn-eco-secondary:active,
 .btn-neon-secondary:active {
   transform: translateY(1px) scale(0.98);
 }
 
-/* Visor de cámara adaptable */
+/* Botón de Detener Cámara (Alerta Roja/Carmesí de Alto Contraste) */
+.btn-eco-danger {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-eco-danger:hover {
+  background: linear-gradient(135deg, #be123c 0%, #9f1239 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.45);
+}
+
+.btn-eco-danger:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ----------------------------------------------------
+   VISOR MULTIMEDIA Y CÁMARA
+   ---------------------------------------------------- */
+#media-container {
+  background-color: #f8fafc;
+  border-color: #a7f3d0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#media-container:hover {
+  border-color: #34d399;
+}
+
 #webcam-container canvas {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover;
   border-radius: 0.9rem;
+  display: block;
 }
 
-/* Barras de progreso suaves sin saltos bruscos */
+/* Botón flotante para alternar cámara */
+#btn-switch-camera {
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btn-switch-camera:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.25);
+}
+
+#btn-switch-camera:active {
+  transform: scale(0.96);
+}
+
+/* ----------------------------------------------------
+   BARRAS DE RESULTADOS Y PREDICCIÓN
+   ---------------------------------------------------- */
 .smooth-progress {
-  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Scrollbar personalizada en Verde Oscuro y Dorado */
+.eco-prediction-card {
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* Scrollbar personalizada en Verde Ambiental */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #064e3b;
+  background: #059669;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: #10b981;
 }
