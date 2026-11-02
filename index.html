@@ -17,25 +17,25 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-eco-light min-h-screen font-sans flex flex-col text-slate-800 antialiased selection:bg-emerald-200">
+<body class="bg-eco-light min-h-screen font-sans flex flex-col text-slate-800 antialiased selection:bg-amber-200 selection:text-emerald-950">
 
-    <!-- Header / Navbar Responsive -->
-    <header class="border-b-2 border-emerald-500/20 bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <!-- Header / Navbar Elegante en Blanco, Verde Oscuro y Dorado -->
+    <header class="border-b-2 border-emerald-900/15 bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex justify-between items-center gap-2">
             <div class="flex items-center gap-2 sm:gap-3.5 min-w-0">
                 <!-- Icono Retro Estilo Badge -->
                 <div class="retro-logo-icon shrink-0">
-                    <i class="fa-solid fa-recycle text-emerald-600 text-lg sm:text-2xl"></i>
+                    <i class="fa-solid fa-recycle text-emerald-900 text-lg sm:text-2xl"></i>
                 </div>
                 <div class="min-w-0">
-                    <!-- Título Retro Responsive -->
+                    <!-- Título Retro Dorado y Verde Oscuro -->
                     <h1 class="retro-title text-base sm:text-2xl font-bold tracking-tight truncate">ECOTRACK</h1>
-                    <p class="text-[9px] sm:text-xs text-blue-600 font-mono tracking-wider sm:tracking-widest uppercase font-bold flex items-center gap-1 truncate">
-                        <i class="fa-solid fa-leaf text-emerald-500 text-[10px]"></i> AI ECO SCANNER
+                    <p class="text-[9px] sm:text-xs text-amber-700 font-mono tracking-wider sm:tracking-widest uppercase font-bold flex items-center gap-1 truncate">
+                        <i class="fa-solid fa-leaf text-emerald-800 text-[10px]"></i> AI ECO SCANNER v1.0
                     </p>
                 </div>
             </div>
-            <span class="text-[10px] sm:text-xs font-mono text-emerald-700 bg-emerald-50 px-2 sm:px-3 py-1 rounded-md border border-emerald-300 font-bold shadow-sm whitespace-nowrap shrink-0">
+            <span class="text-[10px] sm:text-xs font-mono text-emerald-950 bg-amber-50 px-2 sm:px-3 py-1 rounded-md border border-amber-300 font-bold shadow-sm whitespace-nowrap shrink-0">
                 <span class="hidden sm:inline">[ </span>ODS #12<span class="hidden sm:inline"> ACTIVE ]</span>
             </span>
         </div>
@@ -48,28 +48,28 @@
         <section class="lg:col-span-7 space-y-4 sm:space-y-6">
             <div class="glass-card p-4 sm:p-6 relative overflow-hidden">
                 <div class="flex justify-between items-center gap-2 mb-3 sm:mb-4">
-                    <h2 class="text-base sm:text-xl font-bold text-emerald-800 flex items-center gap-2">
-                        <i class="fa-solid fa-camera text-emerald-600 text-sm sm:text-lg"></i> Escáner Ecológico
+                    <h2 class="text-base sm:text-xl font-bold text-emerald-950 flex items-center gap-2">
+                        <i class="fa-solid fa-camera text-emerald-800 text-sm sm:text-lg"></i> Escáner Ecológico
                     </h2>
-                    <span class="text-[10px] sm:text-xs font-bold bg-blue-50 text-blue-700 px-2.5 py-0.5 sm:py-1 rounded-full border border-blue-200 shrink-0">
+                    <span class="text-[10px] sm:text-xs font-bold bg-amber-50 text-amber-800 px-2.5 py-0.5 sm:py-1 rounded-full border border-amber-300 shrink-0">
                         IA Móvil
                     </span>
                 </div>
 
-                <!-- Media Viewer / Visor Responsive -->
-                <div id="media-container" class="relative w-full h-72 sm:h-96 bg-slate-100 rounded-2xl border-2 border-dashed border-emerald-400 flex flex-col items-center justify-center overflow-hidden shadow-inner">
+                <!-- Media Viewer / Visor Responsive con Acentos Dorados -->
+                <div id="media-container" class="relative w-full h-72 sm:h-96 bg-slate-50/80 rounded-2xl border-2 border-dashed border-amber-400/80 flex flex-col items-center justify-center overflow-hidden shadow-inner">
                     
-                    <!-- Botón Flotante para Quitar Foto (visible solo al subir imagen) -->
-                    <button id="btn-remove-photo" onclick="clearPhoto()" class="hidden absolute top-3 right-3 bg-rose-600/90 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm transition-all flex items-center gap-1.5 z-20" title="Quitar imagen actual">
+                    <!-- Botón Flotante para Quitar Foto -->
+                    <button id="btn-remove-photo" onclick="clearPhoto()" class="hidden absolute top-3 right-3 bg-rose-600/95 hover:bg-rose-700 active:scale-95 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm transition-all flex items-center gap-1.5 z-20" title="Quitar foto actual">
                         <i class="fa-solid fa-xmark"></i> Quitar foto
                     </button>
 
                     <!-- Placeholder UI -->
                     <div id="placeholder-ui" class="text-center p-4 sm:p-6 space-y-2 sm:space-y-3">
-                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-1 sm:mb-2 border border-emerald-300 shadow-sm">
-                            <i class="fa-solid fa-cloud-arrow-up text-xl sm:text-3xl"></i>
+                        <div class="w-12 h-12 sm:w-16 sm:h-16 bg-amber-50 text-emerald-900 rounded-full flex items-center justify-center mx-auto mb-1 sm:mb-2 border border-amber-300 shadow-sm">
+                            <i class="fa-solid fa-cloud-arrow-up text-xl sm:text-3xl text-emerald-800"></i>
                         </div>
-                        <p class="text-sm sm:text-base text-slate-700 font-bold leading-tight">Activa tu cámara o sube una foto del residuo</p>
+                        <p class="text-sm sm:text-base text-slate-800 font-bold leading-tight">Activa tu cámara o sube una foto del residuo</p>
                         <p class="text-[11px] sm:text-xs text-slate-500 font-medium">Papel, cartón, plástico, vidrio, metal u orgánico</p>
                     </div>
 
@@ -80,7 +80,7 @@
                     <img id="image-preview" class="hidden w-full h-full object-contain p-2" alt="Vista previa">
                 </div>
 
-                <!-- Botones de Acción Adaptados a Celulares -->
+                <!-- Botones de Acción Adaptados -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
                     <button id="btn-webcam" onclick="toggleWebcam()" class="btn-neon-primary py-3 sm:py-3.5 px-4 font-bold flex items-center justify-center gap-2 text-sm sm:text-base select-none">
                         <i class="fa-solid fa-video"></i> Activar Cámara
@@ -95,12 +95,12 @@
                 <!-- Configuración URL de Teachable Machine -->
                 <div class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-200">
                     <details class="text-xs text-slate-500">
-                        <summary class="cursor-pointer hover:text-emerald-600 font-semibold transition-colors flex items-center gap-2 select-none">
-                            <i class="fa-solid fa-gear"></i> Configurar Enlace de Teachable Machine
+                        <summary class="cursor-pointer hover:text-emerald-800 font-semibold transition-colors flex items-center gap-2 select-none">
+                            <i class="fa-solid fa-gear text-amber-600"></i> Configurar Enlace de Teachable Machine
                         </summary>
                         <div class="mt-3 flex flex-col sm:flex-row gap-2">
-                            <input type="text" id="model-url" placeholder="https://teachablemachine.withgoogle.com/models/TU_MODELO/" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 font-mono">
-                            <button onclick="loadCustomModel()" class="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold px-4 py-2 rounded-lg transition-all whitespace-nowrap shadow-sm text-center">
+                            <input type="text" id="model-url" placeholder="https://teachablemachine.withgoogle.com/models/TU_MODELO/" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-amber-500 font-mono">
+                            <button onclick="loadCustomModel()" class="bg-emerald-900 hover:bg-emerald-950 active:scale-95 text-amber-200 border border-amber-400/50 font-bold px-4 py-2 rounded-lg transition-all whitespace-nowrap shadow-sm text-center">
                                 Cargar
                             </button>
                         </div>
@@ -112,8 +112,8 @@
         <!-- Right Panel: Resultados e Impacto (5 cols) -->
         <section class="lg:col-span-5 space-y-4 sm:space-y-6">
             <div class="glass-card p-4 sm:p-6 space-y-4 sm:space-y-6 min-h-[220px]">
-                <h2 class="text-base sm:text-xl font-bold text-emerald-800 flex items-center gap-2">
-                    <i class="fa-solid fa-chart-pie text-emerald-600 text-sm sm:text-lg"></i> Resultados de Clasificación
+                <h2 class="text-base sm:text-xl font-bold text-emerald-950 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-emerald-800 text-sm sm:text-lg"></i> Resultados de Clasificación
                 </h2>
 
                 <!-- Contenedor de Resultados con altura mínima para evitar saltos de scroll -->
@@ -121,28 +121,28 @@
                     <p class="text-xs text-slate-400 italic text-center py-6 font-medium">Esperando imagen o escaneo de residuos...</p>
                 </div>
 
-                <!-- Tarjeta de Impacto Ambiental -->
-                <div id="eco-impact-card" class="hidden bg-gradient-to-br from-emerald-50 via-white to-blue-50 border-2 border-emerald-400 rounded-2xl p-4 sm:p-5 space-y-3 sm:space-y-4 shadow-md transition-all duration-300">
-                    <div class="flex items-center justify-between border-b border-emerald-200 pb-2.5 sm:pb-3">
-                        <span class="text-xs font-black text-emerald-800 uppercase tracking-wider flex items-center gap-2">
-                            <i class="fa-solid fa-earth-americas text-sm sm:text-base text-emerald-600"></i> Impacto Ambiental
+                <!-- Tarjeta de Impacto Ambiental con Borde Dorado y Acentos Verde Oscuro -->
+                <div id="eco-impact-card" class="hidden bg-gradient-to-br from-white via-amber-50/20 to-emerald-50/40 border-2 border-amber-400/90 rounded-2xl p-4 sm:p-5 space-y-3 sm:space-y-4 shadow-md transition-all duration-300">
+                    <div class="flex items-center justify-between border-b border-amber-200 pb-2.5 sm:pb-3">
+                        <span class="text-xs font-black text-emerald-950 uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-earth-americas text-sm sm:text-base text-amber-600"></i> Impacto Ambiental
                         </span>
-                        <span class="text-xs sm:text-sm font-mono bg-emerald-600 text-white border border-emerald-700 px-2.5 sm:px-3 py-1 rounded-full font-bold shadow-sm" id="co2-value">-</span>
+                        <span class="text-xs sm:text-sm font-mono bg-emerald-950 text-amber-300 border border-amber-400/80 px-2.5 sm:px-3 py-1 rounded-full font-bold shadow-sm" id="co2-value">-</span>
                     </div>
                     
                     <div class="space-y-3 sm:space-y-4">
                         <!-- Contenedor Sugerido -->
-                        <div class="bg-white/90 p-3 sm:p-4 rounded-xl border border-emerald-300 space-y-1 shadow-sm">
-                            <p class="text-[11px] sm:text-xs font-bold text-emerald-700 uppercase tracking-wider">
-                                <i class="fa-solid fa-trash-can mr-1"></i> Contenedor Sugerido:
+                        <div class="bg-white/95 p-3 sm:p-4 rounded-xl border border-emerald-900/20 space-y-1 shadow-sm">
+                            <p class="text-[11px] sm:text-xs font-bold text-emerald-900 uppercase tracking-wider">
+                                <i class="fa-solid fa-trash-can mr-1 text-emerald-700"></i> Contenedor Sugerido:
                             </p>
                             <p class="text-base sm:text-lg font-extrabold text-slate-800 leading-snug" id="bin-value">-</p>
                         </div>
 
                         <!-- Tip Ecológico -->
-                        <div class="bg-white/90 p-3 sm:p-4 rounded-xl border border-blue-300 space-y-1 shadow-sm">
-                            <p class="text-[11px] sm:text-xs font-bold text-blue-700 uppercase tracking-wider">
-                                <i class="fa-solid fa-lightbulb mr-1"></i> Tip Ecológico:
+                        <div class="bg-white/95 p-3 sm:p-4 rounded-xl border border-amber-300/70 space-y-1 shadow-sm">
+                            <p class="text-[11px] sm:text-xs font-bold text-amber-800 uppercase tracking-wider">
+                                <i class="fa-solid fa-lightbulb mr-1 text-amber-600"></i> Tip Ecológico:
                             </p>
                             <p class="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed" id="eco-tip">-</p>
                         </div>
@@ -152,7 +152,7 @@
         </section>
     </main>
 
-    <!-- Footer Responsive -->
+    <!-- Footer -->
     <footer class="border-t border-slate-200 bg-white/80 py-4 sm:py-6 text-center text-[11px] sm:text-xs text-slate-500 font-medium px-4">
         <p>EcoTrack &copy; 2026 - Solución para el Desarrollo Sostenible impulsada con Inteligencia Artificial.</p>
     </footer>

@@ -232,19 +232,19 @@ async function predict(sourceElement) {
         const probVal = smoothedProbabilities[i];
 
         const progressWrapper = document.createElement("div");
-        progressWrapper.className = "space-y-1.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 shadow-sm transition-all";
+        progressWrapper.className = "space-y-1.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/90 shadow-sm transition-all";
 
         progressWrapper.innerHTML = `
             <div class="flex justify-between items-center text-xs sm:text-sm font-semibold">
-                <span class="capitalize text-slate-700 flex items-center gap-2 truncate">
-                    <i class="fa-solid fa-tag text-emerald-600 text-xs sm:text-sm"></i> ${className}
+                <span class="capitalize text-slate-800 flex items-center gap-2 truncate font-bold">
+                    <i class="fa-solid fa-tag text-emerald-900 text-xs sm:text-sm"></i> ${className}
                 </span>
-                <span class="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-xs sm:text-sm">
+                <span class="font-mono text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-300 text-xs sm:text-sm">
                     ${probVal.toFixed(1)}%
                 </span>
             </div>
             <div class="w-full bg-slate-100 rounded-full h-2.5 sm:h-3 overflow-hidden border border-slate-200">
-                <div class="bg-gradient-to-r from-emerald-500 to-blue-500 h-full rounded-full smooth-progress" style="width: ${probVal.toFixed(1)}%"></div>
+                <div class="bg-gradient-to-r from-emerald-900 via-emerald-700 to-amber-500 h-full rounded-full smooth-progress" style="width: ${probVal.toFixed(1)}%"></div>
             </div>
         `;
         resultsContainer.appendChild(progressWrapper);
