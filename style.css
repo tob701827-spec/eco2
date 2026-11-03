@@ -223,6 +223,14 @@ body.bg-eco-light {
   object-fit: cover;
   border-radius: 0.9rem;
   display: block;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Aceleración por hardware para animaciones en celulares */
+.progress-bar-fill {
+  will-change: width;
+  transform: translateZ(0);
 }
 
 /* Botón flotante para alternar cámara */

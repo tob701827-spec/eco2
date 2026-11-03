@@ -64,6 +64,17 @@
                 <!-- Media Viewer / Visor Responsive con Acentos Verdes -->
                 <div id="media-container" class="relative w-full h-72 sm:h-96 bg-slate-50/90 rounded-2xl border-2 border-dashed border-emerald-300 flex flex-col items-center justify-center overflow-hidden shadow-inner">
                     
+                    <!-- Overlay de Carga Rápida de Cámara -->
+                    <div id="camera-loading-overlay" class="hidden absolute inset-0 bg-white/95 backdrop-blur-xs flex flex-col items-center justify-center gap-2 z-30">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200 shadow-sm animate-bounce">
+                            <i class="fa-solid fa-camera text-xl text-emerald-600"></i>
+                        </div>
+                        <span class="text-xs font-extrabold text-emerald-950 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-notch fa-spin text-emerald-600"></i> Conectando lente...
+                        </span>
+                        <span class="text-[10px] text-slate-400">Optimizando velocidad para móvil</span>
+                    </div>
+
                     <!-- Botón Flotante para Alternar Cámara (Trasera / Delantera en Celulares) -->
                     <button id="btn-switch-camera" onclick="switchCamera()" class="hidden absolute top-3 left-3 bg-white/95 hover:bg-white active:scale-95 text-emerald-950 border border-emerald-300 text-xs font-bold px-3 py-1.5 rounded-full shadow-md backdrop-blur-sm transition-all flex items-center gap-1.5 z-20 cursor-pointer" title="Cambiar a la otra cámara (trasera / delantera)">
                         <i class="fa-solid fa-camera-rotate text-emerald-600"></i>
